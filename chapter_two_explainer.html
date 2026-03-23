@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter Two — Why the Technological System Will Destroy Itself</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09090b;
+  --bg2: #111114;
+  --bg3: #18181c;
+  --bg4: #1f2025;
+  --border: #27282e;
+  --border2: #35363e;
+  --tx: #b4b8c4;
+  --tx2: #6c7080;
+  --tx3: #ebeef5;
+  --red: #f04848;
+  --red-d: rgba(240,72,72,.1);
+  --org: #f0842a;
+  --org-d: rgba(240,132,42,.1);
+  --grn: #2ac97a;
+  --grn-d: rgba(42,201,122,.1);
+  --blu: #3b8cf0;
+  --blu-d: rgba(59,140,240,.1);
+  --pur: #a06cf0;
+  --pur-d: rgba(160,108,240,.1);
+  --cyn: #2ac9c9;
+  --cyn-d: rgba(42,201,201,.1);
+  --amb: #c9a42a;
+  --amb-d: rgba(201,164,42,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+
+/* PROGRESS */
+.prog{position:fixed;top:0;left:0;height:3px;z-index:999;background:linear-gradient(90deg,var(--red),var(--org),var(--grn));width:0;transition:width .12s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:-30%;background:radial-gradient(ellipse 50% 40% at 35% 45%,rgba(240,72,72,.05),transparent),radial-gradient(ellipse 45% 50% at 65% 55%,rgba(240,132,42,.04),transparent);pointer-events:none}
+.hero-lbl{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:28px;opacity:0;animation:fu .7s ease forwards .2s}
+.hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;color:var(--tx3);line-height:1.12;max-width:800px;opacity:0;animation:fu .7s ease forwards .35s}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-sub{max-width:620px;margin-top:22px;font-size:17px;color:var(--tx2);opacity:0;animation:fu .7s ease forwards .5s}
+.hero-meta{margin-top:36px;font-size:13px;color:var(--tx2);opacity:0;animation:fu .7s ease forwards .65s}
+.hero-arr{position:absolute;bottom:32px;color:var(--tx2);font-size:12px;letter-spacing:1px;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fu .7s ease forwards .8s}
+.hero-arr svg{animation:bob 2s ease-in-out infinite}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(9,9,11,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav-in{max-width:1120px;margin:0 auto;display:flex;gap:2px;padding:10px 24px}
+.nb{flex-shrink:0;padding:6px 13px;border-radius:6px;font-size:12px;font-weight:600;color:var(--tx2);background:none;border:none;cursor:pointer;white-space:nowrap;transition:.2s}
+.nb:hover,.nb.on{color:var(--tx3);background:var(--bg3)}
+.nb.on{color:var(--red)}
+
+/* CONTENT */
+.ct{max-width:840px;margin:0 auto;padding:0 24px}
+.sec{padding:80px 0 56px;opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s}
+.sec.vis{opacity:1;transform:none}
+.sn{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.sec h2{font-size:clamp(22px,3.5vw,34px);font-weight:800;color:var(--tx3);line-height:1.18;margin-bottom:18px}
+.si{font-size:17px;color:var(--tx2);margin-bottom:32px;border-left:3px solid var(--red);padding-left:16px}
+p+p{margin-top:14px}
+
+/* CARDS */
+.vc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:30px;margin:30px 0;position:relative;overflow:hidden}
+.vc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.vc.r::after{background:var(--red)}.vc.o::after{background:var(--org)}.vc.g::after{background:var(--grn)}.vc.b::after{background:var(--blu)}.vc.p::after{background:var(--pur)}.vc.c::after{background:var(--cyn)}
+.vc h3{font-size:17px;font-weight:700;color:var(--tx3);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+
+/* PROPOSITION BOXES */
+.prop{background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:22px 24px;margin:24px 0;position:relative;padding-left:58px}
+.prop::before{content:attr(data-num);position:absolute;left:18px;top:22px;width:30px;height:30px;border-radius:8px;background:var(--red-d);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.prop strong{color:var(--tx3);font-weight:700}
+.prop em{color:var(--org);font-style:normal;font-weight:600}
+
+/* KEY POINT */
+.kp{display:flex;gap:14px;border-radius:11px;padding:18px 20px;margin:26px 0;align-items:flex-start}
+.kp.r{background:var(--red-d);border:1px solid rgba(240,72,72,.16)}
+.kp.o{background:var(--org-d);border:1px solid rgba(240,132,42,.16)}
+.kp.g{background:var(--grn-d);border:1px solid rgba(42,201,122,.16)}
+.kp.b{background:var(--blu-d);border:1px solid rgba(59,140,240,.16)}
+.kp.p{background:var(--pur-d);border:1px solid rgba(160,108,240,.16)}
+.kp .ki{flex-shrink:0;width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.kp.r .ki{background:rgba(240,72,72,.14)}.kp.o .ki{background:rgba(240,132,42,.14)}.kp.g .ki{background:rgba(42,201,122,.14)}.kp.b .ki{background:rgba(59,140,240,.14)}.kp.p .ki{background:rgba(160,108,240,.14)}
+.kp .kt{font-size:14.5px;line-height:1.65}
+.kp .kt strong{color:var(--tx3)}
+
+/* PULL QUOTE */
+.pq{margin:32px 0;padding:22px 26px;background:var(--bg2);border-left:4px solid var(--blu);border-radius:0 10px 10px 0;font-size:16px;font-weight:500;color:var(--tx3);font-style:italic;line-height:1.7}
+.pq .at{font-style:normal;font-weight:400;color:var(--tx2);font-size:13px;margin-top:8px;display:block}
+
+/* DIAGRAM */
+.dw{margin:32px 0;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px;overflow-x:auto}
+.dw h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.dw svg{width:100%;height:auto;display:block;min-width:500px}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:26px 0}
+@media(max-width:700px){.g2,.g3{grid-template-columns:1fr}}
+.gc{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:20px}
+.gc h4{font-size:14px;font-weight:700;color:var(--tx3);margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.gc p{font-size:13.5px;color:var(--tx2);line-height:1.65}
+
+/* ACCORDION */
+.acc{margin:26px 0}
+.ai{border:1px solid var(--border);border-radius:10px;margin-bottom:7px;overflow:hidden;background:var(--bg2)}
+.ah{padding:15px 18px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;font-size:15px;font-weight:600;color:var(--tx3);transition:.2s}
+.ah:hover{background:var(--bg3)}
+.achev{margin-left:auto;transition:transform .3s;color:var(--tx2)}
+.ai.op .achev{transform:rotate(180deg)}
+.ab{max-height:0;overflow:hidden;transition:max-height .4s;padding:0 18px}
+.ai.op .ab{max-height:700px}
+.abi{padding:0 0 16px;font-size:14px;color:var(--tx2);line-height:1.7}
+
+/* INTERACTIVE SIM */
+#simCanvas{width:100%;height:340px;border-radius:10px;background:#060608;display:block}
+.sim-ctrls{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.sim-btn{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--tx3);background:var(--bg3);border:1px solid var(--border);cursor:pointer;transition:.2s}
+.sim-btn:hover{border-color:var(--red);color:var(--red)}
+.sim-lbl{font-size:12px;color:var(--tx2)}
+
+/* FLOW STEPS */
+.flow{display:flex;flex-direction:column;gap:0;margin:26px 0}
+.fs{display:flex;gap:16px;position:relative;padding-bottom:28px}
+.fs:last-child{padding-bottom:0}
+.fs::before{content:'';position:absolute;left:17px;top:38px;bottom:0;width:2px;background:var(--border)}
+.fs:last-child::before{display:none}
+.fn{flex-shrink:0;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bg);z-index:1}
+.fn.r{background:var(--red)}.fn.o{background:var(--org)}.fn.g{background:var(--grn)}.fn.b{background:var(--blu)}.fn.p{background:var(--pur)}.fn.c{background:var(--cyn)}
+.fb h5{font-size:15px;font-weight:700;color:var(--tx3);margin-bottom:3px}
+.fb p{font-size:13.5px;color:var(--tx2);line-height:1.6}
+
+/* FOOTER */
+.ft{margin-top:80px;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--tx2);font-size:13px}
+
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(max-width:600px){.sec{padding:56px 0 36px}.vc{padding:20px}.hero h1{font-size:24px}}
+.home-btn{position:fixed;top:16px;left:16px;z-index:200;display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:rgba(14,14,18,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);color:rgba(200,205,220,.7);font-family:Inter,sans-serif;font-size:12px;font-weight:600;text-decoration:none;transition:all .25s;letter-spacing:.3px}.home-btn:hover{background:rgba(24,24,32,.95);color:#eee;border-color:rgba(255,255,255,.15)}.home-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+<a href="index.html" class="home-btn"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M12 3v18"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg>Home</a>
+
+<div class="prog" id="prog"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-lbl">Chapter Two — Explained</div>
+  <h1>Why the Technological System<br>Will <em>Destroy Itself</em></h1>
+  <p class="hero-sub">A visual guide to the theory of self-propagating systems, natural selection among human organizations, and why the outcome for our biosphere may be catastrophic.</p>
+  <div class="hero-meta">Based on the text by Theodore John Kaczynski · With supporting material from Appendix Two</div>
+  <div class="hero-arr">SCROLL<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+</section>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav"><div class="nav-in">
+  <button class="nb" onclick="go('overview')">Overview</button>
+  <button class="nb" onclick="go('selfprop')">Self-Prop Systems</button>
+  <button class="nb" onclick="go('props')">The 7 Propositions</button>
+  <button class="nb" onclick="go('global')">Global Competition</button>
+  <button class="nb" onclick="go('breakdown')">Why Breakdown?</button>
+  <button class="nb" onclick="go('env')">Environment</button>
+  <button class="nb" onclick="go('fermi')">Fermi Paradox</button>
+  <button class="nb" onclick="go('techies')">Techies' Fantasy</button>
+  <button class="nb" onclick="go('conc')">Conclusion</button>
+</div></nav>
+
+<div class="ct">
+
+<!-- ═══ 1. OVERVIEW ═══ -->
+<section class="sec" id="overview">
+  <div class="sn">The Core Argument</div>
+  <h2>A theory of civilizational self-destruction</h2>
+  <p class="si">Chapter Two builds a formal theory explaining <em>why</em> societies fail — using the concept of "self-propagating systems" competing via natural selection. It argues the combination of advanced technology + global communication makes civilizational collapse not just likely, but structurally inevitable.</p>
+
+  <div class="dw">
+    <h4>The Argument's Causal Chain</h4>
+    <svg viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg">
+      <!-- Step 1 -->
+      <rect x="20" y="20" width="220" height="54" rx="11" fill="#111114" stroke="#3b8cf0" stroke-width="1.5"/>
+      <text x="130" y="43" text-anchor="middle" fill="#3b8cf0" font-family="Inter,sans-serif" font-size="11" font-weight="700">1. Self-prop systems arise</text>
+      <text x="130" y="58" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">in any sufficiently rich environment</text>
+      <line x1="240" y1="47" x2="280" y2="47" stroke="#27282e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Step 2 -->
+      <rect x="280" y="20" width="200" height="54" rx="11" fill="#111114" stroke="#f0842a" stroke-width="1.5"/>
+      <text x="380" y="43" text-anchor="middle" fill="#f0842a" font-family="Inter,sans-serif" font-size="11" font-weight="700">2. They compete for power</text>
+      <text x="380" y="58" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">short-term advantage wins</text>
+      <line x1="480" y1="47" x2="520" y2="47" stroke="#27282e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Step 3 -->
+      <rect x="520" y="20" width="220" height="54" rx="11" fill="#111114" stroke="#2ac97a" stroke-width="1.5"/>
+      <text x="630" y="43" text-anchor="middle" fill="#2ac97a" font-family="Inter,sans-serif" font-size="11" font-weight="700">3. Technology → global reach</text>
+      <text x="630" y="58" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">rapid transport &amp; communication</text>
+
+      <!-- Arrow down -->
+      <line x1="630" y1="74" x2="630" y2="110" stroke="#27282e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Step 4 -->
+      <rect x="430" y="110" width="300" height="54" rx="11" fill="#111114" stroke="#a06cf0" stroke-width="1.5"/>
+      <text x="580" y="133" text-anchor="middle" fill="#a06cf0" font-family="Inter,sans-serif" font-size="11" font-weight="700">4. A few global systems dominate</text>
+      <text x="580" y="148" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">immense power, fierce competition</text>
+      <line x1="430" y1="137" x2="390" y2="137" stroke="#27282e" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+      <!-- Step 5 -->
+      <rect x="120" y="110" width="270" height="54" rx="11" fill="#111114" stroke="#f04848" stroke-width="1.5"/>
+      <text x="255" y="133" text-anchor="middle" fill="#f04848" font-family="Inter,sans-serif" font-size="11" font-weight="700">5. World-system becomes tightly coupled</text>
+      <text x="255" y="148" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">breakdowns propagate everywhere</text>
+
+      <!-- Arrow down center -->
+      <line x1="380" y1="164" x2="380" y2="200" stroke="#27282e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Step 6 -->
+      <rect x="160" y="200" width="440" height="54" rx="11" fill="rgba(240,72,72,.06)" stroke="#f04848" stroke-width="2"/>
+      <text x="380" y="223" text-anchor="middle" fill="#f04848" font-family="Inter,sans-serif" font-size="12" font-weight="800">6. Catastrophic breakdown of the world-system</text>
+      <text x="380" y="240" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">biosphere devastated · complex life endangered</text>
+
+      <!-- Bottom note -->
+      <rect x="180" y="270" width="400" height="30" rx="8" fill="none" stroke="none"/>
+      <text x="380" y="290" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10" font-style="italic">This process is not accidental — it is structurally inevitable given technology + global communication</text>
+
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6c7080"/></marker>
+        <marker id="arr2" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M10 0L0 5L10 10z" fill="#6c7080"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <p>The author is careful to distinguish this from "Social Darwinism" — he is not saying the winners are morally superior. He is simply applying the principle of natural selection as a descriptive tool to human organizations, to show that destructive outcomes are not accidental but systemic.</p>
+</section>
+
+<!-- ═══ 2. SELF-PROP SYSTEMS ═══ -->
+<section class="sec" id="selfprop">
+  <div class="sn">Part II — Foundational Concept</div>
+  <h2>What is a self-propagating system?</h2>
+  <p class="si">The entire theory rests on a single concept: any system that tends to promote its own survival and propagation. These range from biological organisms to corporations, political parties, religions, and even informal social networks.</p>
+
+  <div class="vc b">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b8cf0" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg> Defining Features</h3>
+    <div class="g2" style="margin-top:14px">
+      <div>
+        <p style="font-size:14px"><strong style="color:var(--blu)">Self-preservation</strong><br>The system acts (consciously or not) to maintain its own existence and resist threats to its survival.</p>
+      </div>
+      <div>
+        <p style="font-size:14px"><strong style="color:var(--blu)">Propagation</strong><br>The system increases its own size/power, or gives rise to new systems inheriting some of its attributes — like a franchise model.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="g3">
+    <div class="gc">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2ac97a" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg> Biological</h4>
+      <p>Organisms, wolf packs, beehives — self-propagation through reproduction without conscious intention.</p>
+    </div>
+    <div class="gc">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f0842a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> Formal human</h4>
+      <p>Nations, corporations, labor unions, churches, political parties — institutional self-preservation.</p>
+    </div>
+    <div class="gc">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a06cf0" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Informal human</h4>
+      <p>Schools of thought, social networks, subcultures — no formal organization, but they propagate all the same.</p>
+    </div>
+  </div>
+
+  <p>Crucially, a human group can be self-propagating <em>independently of any conscious intention</em> by its members — just as a beehive propagates without any individual bee planning it. This means the theory doesn't depend on human nature: it applies to any self-propagating entity, including future machine intelligences.</p>
+
+  <div class="kp b">
+    <div class="ki"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b8cf0" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+    <div class="kt"><strong>Subsystem / Supersystem:</strong> Systems nest inside each other. A nuclear family is a subsystem of a band; a band is a subsystem of a tribe. A corporation is a subsystem of the global economy. The health of subsystems depends on the survival of their supersystem.</div>
+  </div>
+</section>
+
+<!-- ═══ 3. THE 7 PROPOSITIONS ═══ -->
+<section class="sec" id="props">
+  <div class="sn">Part II — The Formal Theory</div>
+  <h2>Seven propositions about self-propagating systems</h2>
+  <p class="si">The author lays out seven numbered propositions — not provable, but "intuitively plausible" and consistent with observable history. Together they form the backbone of the theory.</p>
+
+  <div class="prop" data-num="1"><strong>Proposition 1:</strong> In any sufficiently rich environment, self-propagating systems will arise, and natural selection will drive them toward <em>increasingly complex, subtle, and sophisticated</em> means of surviving and propagating.</div>
+
+  <div class="prop" data-num="2"><strong>Proposition 2:</strong> In the short term, natural selection favors self-prop systems that pursue <em>short-term advantage with little or no regard for long-term consequences</em>. (This is because systems exercising long-term foresight sacrifice competitive power in the present.)</div>
+
+  <div class="prop" data-num="3"><strong>Proposition 3:</strong> Self-propagating subsystems tend to become <em>dependent on their supersystem</em>. They can't survive its collapse. (Systems that "waste" resources preparing for the supersystem's collapse are outcompeted by those that exploit the current order fully.)</div>
+
+  <div class="prop" data-num="4"><strong>Proposition 4:</strong> Transportation and communication impose a <em>limit on the geographical reach</em> of any self-prop system.</div>
+
+  <div class="prop" data-num="5"><strong>Proposition 5:</strong> The <em>only consistent limit</em> on the size of human self-prop systems is the available means of transport and communication. Natural selection tends to produce groups that operate at <em>maximum possible geographical size</em>.</div>
+
+  <div class="prop" data-num="6"><strong>Proposition 6:</strong> In modern times, with near-instant global communication, natural selection produces <em>global</em> self-prop systems — and this will remain true even if humans are replaced by machines.</div>
+
+  <div class="prop" data-num="7"><strong>Proposition 7:</strong> Power tends to concentrate in the hands of <em>a relatively small number of global self-propagating systems</em>. Weaker systems are eliminated or subjugated.</div>
+
+  <div class="dw">
+    <h4>The Deforestation Analogy — Illustrating Proposition 2</h4>
+    <svg viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg">
+      <!-- Kingdom A -->
+      <rect x="20" y="20" width="220" height="80" rx="10" fill="#111114" stroke="#2ac97a" stroke-width="1.5"/>
+      <text x="130" y="44" text-anchor="middle" fill="#2ac97a" font-family="Inter,sans-serif" font-size="12" font-weight="700">Kingdom A (Prudent)</text>
+      <text x="130" y="62" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">Limits forest-clearing</text>
+      <text x="130" y="76" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">Fewer crops → smaller army</text>
+      <text x="130" y="90" text-anchor="middle" fill="#f04848" font-family="Inter,sans-serif" font-size="10" font-weight="600">✗ CONQUERED</text>
+
+      <!-- Arrow -->
+      <text x="270" y="60" fill="#6c7080" font-family="Inter,sans-serif" font-size="16">←</text>
+
+      <!-- Kingdom B -->
+      <rect x="300" y="20" width="220" height="80" rx="10" fill="#111114" stroke="#f0842a" stroke-width="1.5"/>
+      <text x="410" y="44" text-anchor="middle" fill="#f0842a" font-family="Inter,sans-serif" font-size="12" font-weight="700">Kingdom B (Reckless)</text>
+      <text x="410" y="62" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">Clears all forests</text>
+      <text x="410" y="76" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">More crops → bigger army</text>
+      <text x="410" y="90" text-anchor="middle" fill="#2ac97a" font-family="Inter,sans-serif" font-size="10" font-weight="600">✓ WINS (short term)</text>
+
+      <!-- Arrow down -->
+      <line x1="410" y1="100" x2="410" y2="130" stroke="#27282e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Outcome -->
+      <rect x="260" y="130" width="320" height="60" rx="10" fill="rgba(240,72,72,.06)" stroke="#f04848" stroke-width="1.5"/>
+      <text x="420" y="155" text-anchor="middle" fill="#f04848" font-family="Inter,sans-serif" font-size="12" font-weight="700">Long-term: Ecological disaster</text>
+      <text x="420" y="172" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="10">All kingdoms collapse — the reckless trait destroys itself</text>
+
+      <!-- Historical note -->
+      <rect x="600" y="50" width="140" height="44" rx="8" fill="var(--bg3)" stroke="var(--border)"/>
+      <text x="670" y="68" text-anchor="middle" fill="#6c7080" font-family="Inter,sans-serif" font-size="9.5">Historical parallel:</text>
+      <text x="670" y="82" text-anchor="middle" fill="#c9a42a" font-family="Inter,sans-serif" font-size="10" font-weight="600">Ancient Maya collapse</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══ 4. GLOBAL COMPETITION ═══ -->
+<section class="sec" id="global">
+  <div class="sn">Part II — The Dangerous New Factor</div>
+  <h2>Global reach changes everything</h2>
+  <p class="si">The author argues there is one crucial new factor in human history: rapid worldwide transportation and communication. This transforms local competition into a global catastrophe-in-waiting.</p>
+
+  <div class="vc r">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f04848" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10"/></svg> Two catastrophic differences at global scale</h3>
+    <div class="g2" style="margin-top:16px">
+      <div style="padding:16px;background:var(--bg3);border-radius:10px">
+        <p style="font-size:14px"><strong style="color:#f04848">1. Too few individuals for selection</strong><br>Biological evolution works with millions of individuals per generation, enabling subtle refinement. Global self-prop systems number in the dozens — far too few for natural selection to develop the sophisticated internal controls that prevent destructive competition (like the mechanisms in mammalian cells).</p>
+      </div>
+      <div style="padding:16px;background:var(--bg3);border-radius:10px">
+        <p style="font-size:14px"><strong style="color:#f04848">2. Errors are global</strong><br>Before global communication, a local breakdown had only local effects — evolution could continue elsewhere. Now, any major "error" by a global self-prop system shakes the entire world. The trial-and-error of natural selection runs out of chances before it can produce stable systems.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>The author draws an analogy to industrial accident theory: catastrophic breakdowns happen when systems are both (i) <strong>highly complex</strong> — small disruptions produce unpredictable consequences — and (ii) <strong>tightly coupled</strong> — breakdowns spread rapidly from one part to all others. The world-system is now both, and growing more so every day.</p>
+</section>
+
+<!-- ═══ 5. WHY BREAKDOWN ═══ -->
+<section class="sec" id="breakdown">
+  <div class="sn">Part II — Three Reasons Peace Is Unstable</div>
+  <h2>Even "world peace" would collapse</h2>
+  <p class="si">The author considers the optimistic scenario: what if global self-prop systems achieved lasting peace? He identifies three independent reasons why this peace would be inherently unstable.</p>
+
+  <div class="flow">
+    <div class="fs">
+      <div class="fn r">1</div>
+      <div class="fb">
+        <h5>Tight coupling can't be undone</h5>
+        <p>To "decouple" the world-system would require designing, implementing, and enforcing a plan regulating the entire global political and economic order in detail. Chapter One already proved that no such plan can ever succeed.</p>
+      </div>
+    </div>
+    <div class="fs">
+      <div class="fn o">2</div>
+      <div class="fb">
+        <h5>Internal factions break out</h5>
+        <p>Subsystems of a winning global system only cooperated because of an external threat. Once the external threat is gone, the subsystems resume competing with each other — destructively. Benjamin Franklin observed this: as soon as a party wins, its members turn on each other over "particular interests."</p>
+      </div>
+    </div>
+    <div class="fs">
+      <div class="fn p">3</div>
+      <div class="fb">
+        <h5>New challengers always evolve</h5>
+        <p>By Proposition 1, new self-prop systems will inevitably arise within the "peaceful" order, evolving ever more subtle ways to evade recognition or suppression. Eventually some will grow powerful enough to challenge the dominant systems — just as terrorist networks, criminal enterprises, and tech corporations have already done.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="ai">
+      <div class="ah" onclick="tog(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f0842a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Examples of emerging challengers (from Appendix Two)
+        <svg class="achev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="ab"><div class="abi">
+        The author catalogs a wide range of emerging self-prop systems that already challenge the established order: terrorist networks and hacker groups that defy law head-on; drug cartels that have disrupted Mexican politics and nearly captured Kenya; bureaucracies that outgrow their original purpose and become autonomous power centers; military establishments that quietly dominate civilian governments (Pakistan, Egypt); and new legal forces — the ultra-orthodox movement in Israel, the rise of multinational corporations rivaling nation-states, and the hardening ideological blocs within American politics. Each exemplifies how new systems continuously arise to challenge existing power structures, regardless of any attempts at global coordination.
+      </div></div>
+    </div>
+    <div class="ai">
+      <div class="ah" onclick="tog(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b8cf0" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        The mammalian body objection — and why it fails
+        <svg class="achev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="ab"><div class="abi">
+        A mammal's body is a self-prop system composed of millions of other self-prop systems (cells) that cooperate without destructive competition. Could the world-system achieve the same? The author answers: a mammalian body is the product of <em>hundreds of millions of years</em> of evolution through natural selection — millions of successive trials — with <em>millions of individuals</em> in each generation from which the "fittest" were selected. Global self-prop systems number in the dozens, and the trial-and-error process will cause catastrophic global breakdowns before it can develop the subtle internal controls that prevent destructive competition. The analogy doesn't hold.
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 6. ENVIRONMENT ═══ -->
+<section class="sec" id="env">
+  <div class="sn">Part III–IV — The Environmental Consequence</div>
+  <h2>A "sixth extinction" unlike any before</h2>
+  <p class="si">The chapter's environmental argument is that the current extinction event is fundamentally different from all previous ones: it is being driven not by one or two blind forces, but by a multiplicity of intelligent, relentlessly competing self-prop systems — leaving no stone unturned.</p>
+
+  <!-- Interactive ecosystem sim -->
+  <div class="dw">
+    <h4>Interactive — Self-Prop Systems Competing for Resources</h4>
+    <p style="font-size:12px;color:var(--tx2);margin-bottom:12px">Each dot is a self-prop system. They consume the green "resources" around them. As they grow, resources deplete. Click <strong>Reset</strong> to restart. Watch how the short-term winners destroy the environment for all.</p>
+    <canvas id="simCanvas"></canvas>
+    <div class="sim-ctrls">
+      <button class="sim-btn" onclick="resetSim()">↻ Reset</button>
+      <span class="sim-lbl" id="simLbl">Systems: 0 · Resources: 100%</span>
+    </div>
+  </div>
+
+  <p>The author catalogs an accelerating series of environmental assaults, then makes a critical move: he argues we must not just project <em>known</em> harms into the future. We must assume that <em>entirely new, currently unimaginable</em> harms will emerge — just as internal combustion engines were unimaginable before 1860, and uranium fuel before 1939.</p>
+
+  <div class="vc o">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0842a" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Why even "green" energy can't save us</h3>
+    <div class="g2" style="margin-top:14px">
+      <div class="gc">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f0842a" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg> Wind</h4>
+        <p>Turbines require neodymium (radioactive waste from mining). Kill enormous numbers of birds — including raptors that control rodent populations. Scaling up as planned may exterminate raptor species entirely.</p>
+      </div>
+      <div class="gc">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f0842a" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M16.36 16.36l1.42 1.42M1 12h2M21 12h2"/></svg> Solar</h4>
+        <p>Solar panels compete with organisms for sunlight. Since the system's energy appetite is insatiable, solar farms will progressively invade habitat until there is no habitat left — this is already happening in the American Southwest.</p>
+      </div>
+    </div>
+    <p style="margin-top:14px;font-size:14px">The core insight: the technological system <em>always</em> expands until it uses all available energy, then demands more. No energy source is "clean" at infinite scale.</p>
+  </div>
+
+  <div class="kp r">
+    <div class="ki"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f04848" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+    <div class="kt"><strong>The atmosphere argument:</strong> Our atmosphere (78% nitrogen, 21% oxygen) was created and is maintained by living things. If the biosphere is disrupted radically enough, the atmosphere could shift to a composition incompatible with complex life — potentially following the path of Venus, whose surface reaches 507°C due to a runaway greenhouse effect.</div>
+  </div>
+</section>
+
+<!-- ═══ 7. FERMI PARADOX ═══ -->
+<section class="sec" id="fermi">
+  <div class="sn">A Cosmic Implication</div>
+  <h2>Why we've never detected aliens</h2>
+  <p class="si">The theory offers a chilling explanation for the Fermi Paradox — the question of why, despite billions of potentially habitable planets, we have never detected any signals from extraterrestrial civilizations.</p>
+
+  <div class="vc p">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a06cf0" stroke-width="2"><path d="M12 2a10 10 0 0110 10c0 8-10 12-10 12S2 20 2 12A10 10 0 0112 2z"/></svg> The Self-Destruction Filter</h3>
+    <div style="margin-top:14px">
+      <p style="font-size:14px">Ray Kurzweil argued that self-destruction is an implausible explanation for the Fermi Paradox — it's not credible that <em>every</em> civilization destroys itself. But that objection only holds if self-destruction is a matter of chance.</p>
+      <p style="font-size:14px;margin-top:10px">If there is a <strong style="color:var(--pur)">process common to all technologically advanced civilizations</strong> that consistently leads them to self-destruction — as the self-prop system theory suggests — then the Fermi Paradox is fully explained. Every civilization that develops rapid global communication triggers the same cascade of competitive, short-sighted self-prop systems, leading to the same outcome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8. TECHIES' FANTASY ═══ -->
+<section class="sec" id="techies">
+  <div class="sn">Part V — Debunking the Utopia</div>
+  <h2>The dream of immortality and "Technianity"</h2>
+  <p class="si">The chapter's final section dismantles the techno-utopian vision — particularly the dream of human immortality — by showing it contradicts the theory's own logic.</p>
+
+  <div class="vc c">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2ac9c9" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg> Three forms of proposed immortality — and why each fails</h3>
+    <div class="flow" style="margin-top:18px">
+      <div class="fs">
+        <div class="fn r">i</div>
+        <div class="fb">
+          <h5>Preserve the human body indefinitely</h5>
+          <p>Fails because machines will soon outperform humans in all useful tasks. Once humans are superfluous, self-prop systems have no reason to maintain them. Useless entities are eliminated by natural selection.</p>
+        </div>
+      </div>
+      <div class="fs">
+        <div class="fn o">ii</div>
+        <div class="fb">
+          <h5>Merge humans with machines (cyborgs)</h5>
+          <p>The biological component survives only as long as it's useful. When purely artificial parts provide a better cost-benefit balance, the human element is discarded. Even if retained, human emotions — love, compassion, ethics — will be purged as "inefficiencies."</p>
+        </div>
+      </div>
+      <div class="fs">
+        <div class="fn p">iii</div>
+        <div class="fb">
+          <h5>"Upload" minds into computers</h5>
+          <p>Uploaded minds are tolerated only while useful. To remain useful they must be transformed until they resemble nothing human. And even then, evolutionary competition means 99.9% of all entities are eventually eliminated — mirroring the fate of biological species.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pq">
+    "Self-prop systems, in the long run, will take care of human beings — even members of the elite — only to the extent that it is to the systems' advantage to take care of them."
+    <span class="at">— Chapter Two</span>
+  </div>
+
+  <p>The author's most provocative move is characterizing techno-utopianism as a <em>religious phenomenon</em>, which he names "Technianity." It shares the structure of apocalyptic millenarian cults: a cataclysmic transformative event (the Singularity, analogous to Judgment Day), followed by a paradise (techno-utopia, analogous to the Kingdom of God), reserved for a chosen elect (the techies, analogous to True Believers). Even the promise of Eternal Life maps perfectly.</p>
+
+  <div class="kp p">
+    <div class="ki"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a06cf0" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+    <div class="kt"><strong>Historical pattern:</strong> Millenarian cults tend to emerge at "times of great social change or crisis." The author suggests that the techies' beliefs reflect not genuine confidence in technology, but deep anxiety about the future — anxiety from which they escape by constructing a quasi-religious myth.</div>
+  </div>
+</section>
+
+<!-- ═══ 9. CONCLUSION ═══ -->
+<section class="sec" id="conc">
+  <div class="sn">The Bottom Line</div>
+  <h2>What follows from all of this?</h2>
+  <p class="si">The chapter reaches a grim conclusion — but crucially, the author insists the conclusion has practical implications. It is not a counsel of despair.</p>
+
+  <div class="vc r" style="text-align:center">
+    <h3 style="justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f04848" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> The conclusion in three statements</h3>
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:14px;text-align:left">
+      <div style="padding:14px 18px;background:var(--bg3);border-radius:10px;border-left:3px solid var(--red)">
+        <p style="font-size:14.5px;color:var(--tx3);font-weight:600">1. What is happening is not accidental.</p>
+        <p style="font-size:13.5px;color:var(--tx2);margin-top:4px">It is not caused by any flaw specific to human character or any chance historical circumstance. It is made inevitable by the combination of modern technology + global communication + the general nature of self-propagating systems.</p>
+      </div>
+      <div style="padding:14px 18px;background:var(--bg3);border-radius:10px;border-left:3px solid var(--org)">
+        <p style="font-size:14.5px;color:var(--tx3);font-weight:600">2. Conservation efforts are structurally futile.</p>
+        <p style="font-size:13.5px;color:var(--tx2);margin-top:4px">Any energy freed by conservation is instantly consumed by the system. Any public concern about the environment is countered by increasingly sophisticated propaganda from self-prop systems that have far more resources than environmentalists. Natural selection guarantees this.</p>
+      </div>
+      <div style="padding:14px 18px;background:var(--bg3);border-radius:10px;border-left:3px solid var(--red)">
+        <p style="font-size:14.5px;color:var(--tx3);font-weight:600">3. If allowed to proceed to its logical conclusion, the technological system will leave the Earth devastated.</p>
+        <p style="font-size:13.5px;color:var(--tx2);margin-top:4px">The outcome will be at least as severe as the extinction of the dinosaurs. At worst, the Earth becomes uninhabitable for all complex life. The technological system itself will be dead.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pq" style="border-left-color:var(--org);margin-top:32px">
+    "The longer the system is allowed to continue its development, the worse will be the outcome for the biosphere and for the human race, and the greater will be the risk that the Earth will be left a dead planet."
+    <span class="at">— Chapter Two, final paragraph of Part IV</span>
+  </div>
+
+  <p style="margin-top:24px">The author ends by emphasizing that the arguments about "Technianity" and the failure of conservation are not abstract philosophical points — they are meant to prevent people from wasting time on approaches he considers naïve. Understanding <em>why</em> societies inevitably destroy themselves (through the mechanism of natural selection on self-propagating systems) is, in his view, the prerequisite for any meaningful response.</p>
+
+  <div class="kp g" style="margin-top:30px">
+    <div class="ki"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2ac97a" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div>
+    <div class="kt"><strong>The Appendix Two role:</strong> Appendix Two provides extended historical evidence for the propositions — from LeBlanc's argument about ecological recklessness in primitive warfare, to the 2007 subprime crisis as an example of competition forcing fatal short-termism, to the growth patterns of pre-industrial empires matching transportation limits, to Benjamin Franklin's observations about factionalism once external threats are removed.</div>
+  </div>
+</section>
+
+</div><!-- .ct -->
+
+<footer class="ft">
+  <p>Visual explainer of Chapter Two &amp; Appendix Two · Based on the texts by Theodore John Kaczynski (© 2015, revised 2021/2018)</p>
+  <p style="margin-top:6px">This document is an explanatory summary and does not reproduce the source texts.</p>
+</footer>
+
+<script>
+// SCROLL REVEAL
+const secs=document.querySelectorAll('.sec'),nbs=document.querySelectorAll('.nb');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');const id=e.target.id;nbs.forEach(b=>b.classList.remove('on'));const m=document.querySelector(`.nb[onclick="go('${id}')"]`);if(m)m.classList.add('on')}})},{threshold:.12});
+secs.forEach(s=>obs.observe(s));
+
+// PROGRESS
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('prog').style.width=(window.scrollY/h*100)+'%'});
+
+// NAV
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+
+// ACCORDION
+function tog(el){el.parentElement.classList.toggle('op')}
+
+// ECOSYSTEM SIM
+const cv=document.getElementById('simCanvas'),cx=cv.getContext('2d');
+let systems=[],resources=[],animId,running=false;
+
+function resetSim(){
+  cancelAnimationFrame(animId);
+  cv.width=cv.clientWidth*2;cv.height=cv.clientHeight*2;
+  cx.scale(2,2);
+  const W=cv.clientWidth,H=cv.clientHeight;
+  systems=[];resources=[];
+  // Generate resource points
+  for(let i=0;i<300;i++){resources.push({x:Math.random()*W,y:Math.random()*H,r:3+Math.random()*4,alive:true})}
+  // Generate competing systems
+  const colors=['#f04848','#f0842a','#3b8cf0','#a06cf0','#2ac9c9','#c9a42a'];
+  for(let i=0;i<6;i++){
+    systems.push({x:60+Math.random()*(W-120),y:60+Math.random()*(H-120),r:8,vx:(Math.random()-.5)*2,vy:(Math.random()-.5)*2,col:colors[i],power:1,alive:true})
+  }
+  running=true;
+  tick();
+}
+
+function tick(){
+  if(!running)return;
+  const W=cv.clientWidth,H=cv.clientHeight;
+  cx.clearRect(0,0,W,H);
+
+  // Draw resources
+  let alive=0;
+  resources.forEach(r=>{
+    if(!r.alive)return;alive++;
+    cx.beginPath();cx.arc(r.x,r.y,r.r,0,Math.PI*2);
+    cx.fillStyle='rgba(42,201,122,.3)';cx.fill();
+  });
+
+  // Update & draw systems
+  let sAlive=0;
+  systems.forEach(s=>{
+    if(!s.alive)return;sAlive++;
+    // Move toward nearest resource
+    let nearest=null,nd=Infinity;
+    resources.forEach(r=>{if(!r.alive)return;const d=Math.hypot(r.x-s.x,r.y-s.y);if(d<nd){nd=d;nearest=r}});
+    if(nearest){
+      const dx=nearest.x-s.x,dy=nearest.y-s.y,d=Math.hypot(dx,dy)||1;
+      s.vx+=dx/d*.15;s.vy+=dy/d*.15;
+    }
+    s.vx*=.96;s.vy*=.96;
+    s.x+=s.vx;s.y+=s.vy;
+    // Bounce
+    if(s.x<s.r){s.x=s.r;s.vx*=-1}if(s.x>W-s.r){s.x=W-s.r;s.vx*=-1}
+    if(s.y<s.r){s.y=s.r;s.vy*=-1}if(s.y>H-s.r){s.y=H-s.r;s.vy*=-1}
+    // Consume resources
+    resources.forEach(r=>{
+      if(!r.alive)return;
+      if(Math.hypot(r.x-s.x,r.y-s.y)<s.r+r.r){r.alive=false;s.power+=.12;s.r=Math.min(8+s.power*2,40)}
+    });
+    // Draw
+    cx.beginPath();cx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    cx.fillStyle=s.col+'33';cx.fill();
+    cx.strokeStyle=s.col;cx.lineWidth=2;cx.stroke();
+  });
+
+  // Competition — larger eats smaller
+  for(let i=0;i<systems.length;i++){
+    if(!systems[i].alive)continue;
+    for(let j=i+1;j<systems.length;j++){
+      if(!systems[j].alive)continue;
+      const d=Math.hypot(systems[i].x-systems[j].x,systems[i].y-systems[j].y);
+      if(d<systems[i].r+systems[j].r){
+        if(systems[i].power>systems[j].power){systems[j].alive=false;systems[i].power+=systems[j].power*.5}
+        else{systems[i].alive=false;systems[j].power+=systems[i].power*.5}
+      }
+    }
+  }
+
+  // If one system left with no resources → collapse
+  const pct=Math.round(alive/300*100);
+  document.getElementById('simLbl').textContent=`Systems: ${sAlive} · Resources: ${pct}%`;
+
+  if(pct===0&&sAlive>0){
+    // Systems starve
+    systems.forEach(s=>{if(s.alive)s.r=Math.max(s.r-.03,2)});
+    cx.fillStyle='rgba(240,72,72,.7)';cx.font='bold 14px Inter';cx.textAlign='center';
+    cx.fillText('RESOURCES EXHAUSTED — SYSTEMS COLLAPSING',W/2,H/2);
+  }
+
+  if(sAlive===0){
+    cx.fillStyle='rgba(240,72,72,.8)';cx.font='bold 16px Inter';cx.textAlign='center';
+    cx.fillText('ALL SYSTEMS DESTROYED',W/2,H/2);
+    running=false;return;
+  }
+
+  animId=requestAnimationFrame(tick);
+}
+
+// Init sim on scroll into view
+const simObs=new IntersectionObserver(es=>{if(es[0].isIntersecting){resetSim();simObs.disconnect()}},{threshold:.2});
+simObs.observe(cv);
+</script>
+</body>
+</html>

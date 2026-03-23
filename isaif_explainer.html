@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISAIF — Industrial Society and Its Future: Visual Explainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090b;--bg2:#0f1014;--bg3:#171920;--bg4:#1e2028;--bd:#262830;--bd2:#353842;--tx:#aeb3c6;--tx2:#686d82;--tx3:#e6eaf5;--em:#c93a1a;--em-d:rgba(201,58,26,.1);--bl:#1a7acc;--bl-d:rgba(26,122,204,.1);--gn:#18a85c;--gn-d:rgba(24,168,92,.1);--pu:#7a4acc;--pu-d:rgba(122,74,204,.1);--am:#cc9a1a;--am-d:rgba(204,154,26,.1);--rd:#cc2e2e;--rd-d:rgba(204,46,46,.08);--cy:#1aacac;--cy-d:rgba(26,172,172,.1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+.prog{position:fixed;top:0;left:0;height:3px;z-index:999;background:linear-gradient(90deg,var(--em),var(--am),var(--bl),var(--gn));width:0;transition:width .12s}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:-30%;background:radial-gradient(ellipse 50% 40% at 30% 45%,rgba(201,58,26,.04),transparent),radial-gradient(ellipse 45% 50% at 70% 55%,rgba(26,122,204,.03),transparent);pointer-events:none}
+.hl{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--em);margin-bottom:24px;opacity:0;animation:fu .7s ease forwards .2s}
+.hero h1{font-size:clamp(24px,4.5vw,46px);font-weight:800;color:var(--tx3);line-height:1.14;max-width:800px;opacity:0;animation:fu .7s ease forwards .3s}
+.hero h1 em{font-style:normal;color:var(--em)}
+.hs{max-width:620px;margin-top:18px;font-size:17px;color:var(--tx2);opacity:0;animation:fu .7s ease forwards .45s}
+.hm{margin-top:32px;font-size:13px;color:var(--tx2);opacity:0;animation:fu .7s ease forwards .55s}
+.ha{position:absolute;bottom:28px;color:var(--tx2);font-size:12px;letter-spacing:1px;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fu .7s ease forwards .7s}
+.ha svg{animation:bob 2s ease-in-out infinite}
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,9,11,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.ni{max-width:1100px;margin:0 auto;display:flex;gap:2px;padding:10px 24px}
+.nb{flex-shrink:0;padding:6px 12px;border-radius:6px;font-size:11.5px;font-weight:600;color:var(--tx2);background:none;border:none;cursor:pointer;white-space:nowrap;transition:.2s}
+.nb:hover,.nb.on{color:var(--tx3);background:var(--bg3)}.nb.on{color:var(--em)}
+.ct{max-width:840px;margin:0 auto;padding:0 24px}
+.sec{padding:72px 0 48px;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}.sec.vis{opacity:1;transform:none}
+.sn{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--em);margin-bottom:10px}
+.sec h2{font-size:clamp(21px,3.2vw,32px);font-weight:800;color:var(--tx3);line-height:1.18;margin-bottom:14px}
+.si{font-size:16.5px;color:var(--tx2);margin-bottom:28px;border-left:3px solid var(--em);padding-left:16px}
+p+p{margin-top:12px}
+.vc{background:var(--bg2);border:1px solid var(--bd);border-radius:13px;padding:26px;margin:26px 0;position:relative;overflow:hidden}
+.vc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.vc.em::after{background:var(--em)}.vc.bl::after{background:var(--bl)}.vc.gn::after{background:var(--gn)}.vc.pu::after{background:var(--pu)}.vc.am::after{background:var(--am)}.vc.rd::after{background:var(--rd)}.vc.cy::after{background:var(--cy)}
+.vc h3{font-size:16px;font-weight:700;color:var(--tx3);margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.kp{display:flex;gap:13px;border-radius:10px;padding:16px 18px;margin:22px 0;align-items:flex-start}
+.kp.em{background:var(--em-d);border:1px solid rgba(201,58,26,.15)}.kp.bl{background:var(--bl-d);border:1px solid rgba(26,122,204,.15)}.kp.gn{background:var(--gn-d);border:1px solid rgba(24,168,92,.15)}.kp.pu{background:var(--pu-d);border:1px solid rgba(122,74,204,.15)}.kp.am{background:var(--am-d);border:1px solid rgba(204,154,26,.15)}.kp.rd{background:var(--rd-d);border:1px solid rgba(204,46,46,.12)}
+.kp .ki{flex-shrink:0;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.kp.em .ki{background:rgba(201,58,26,.13)}.kp.bl .ki{background:rgba(26,122,204,.13)}.kp.gn .ki{background:rgba(24,168,92,.13)}.kp.pu .ki{background:rgba(122,74,204,.13)}.kp.am .ki{background:rgba(204,154,26,.13)}.kp.rd .ki{background:rgba(204,46,46,.1)}
+.kp .kt{font-size:13.5px;line-height:1.65}.kp .kt strong{color:var(--tx3)}
+.pq{margin:26px 0;padding:18px 22px;background:var(--bg2);border-left:4px solid var(--bl);border-radius:0 10px 10px 0;font-size:15px;font-weight:500;color:var(--tx3);font-style:italic;line-height:1.7}
+.pq .at{font-style:normal;font-weight:400;color:var(--tx2);font-size:12.5px;margin-top:7px;display:block}
+.dw{margin:26px 0;background:var(--bg2);border:1px solid var(--bd);border-radius:13px;padding:22px;overflow-x:auto}
+.dw h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--em);margin-bottom:12px}
+.dw svg{width:100%;height:auto;display:block;min-width:480px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:22px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.gc{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:18px}
+.gc h4{font-size:13.5px;font-weight:700;color:var(--tx3);margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.gc p{font-size:13px;color:var(--tx2);line-height:1.62}
+.acc{margin:22px 0}
+.ai{border:1px solid var(--bd);border-radius:9px;margin-bottom:6px;overflow:hidden;background:var(--bg2)}
+.ah{padding:13px 16px;display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;font-size:14px;font-weight:600;color:var(--tx3);transition:.2s}
+.ah:hover{background:var(--bg3)}
+.achev{margin-left:auto;transition:transform .3s;color:var(--tx2)}
+.ai.op .achev{transform:rotate(180deg)}
+.ab{max-height:0;overflow:hidden;transition:max-height .4s;padding:0 16px}
+.ai.op .ab{max-height:600px}
+.abi{padding:0 0 14px;font-size:13px;color:var(--tx2);line-height:1.7}
+.ft{margin-top:72px;padding:36px 24px;border-top:1px solid var(--bd);text-align:center;color:var(--tx2);font-size:12.5px}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(max-width:600px){.sec{padding:52px 0 32px}.vc{padding:20px}}
+.home-btn{position:fixed;top:16px;left:16px;z-index:200;display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:rgba(14,14,18,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);color:rgba(200,205,220,.7);font-family:Inter,sans-serif;font-size:12px;font-weight:600;text-decoration:none;transition:all .25s;letter-spacing:.3px}.home-btn:hover{background:rgba(24,24,32,.95);color:#eee;border-color:rgba(255,255,255,.15)}.home-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+<a href="index.html" class="home-btn"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M12 3v18"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg>Home</a>
+<div class="prog" id="prog"></div>
+
+<section class="hero">
+  <div class="hl">ISAIF — Visual Explainer</div>
+  <h1>Industrial Society and Its Future:<br>The <em>Complete Argument</em> Mapped</h1>
+  <p class="hs">A structural guide to the 232-paragraph text — distilling the core concepts of the power process, surrogate activities, the impossibility of reform, and the case for revolution against the technological system.</p>
+  <div class="hm">Based on "Industrial Society and Its Future" by Theodore John Kaczynski (FC, 1995)</div>
+  <div class="ha">SCROLL<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+</section>
+
+<nav class="nav"><div class="ni">
+  <button class="nb" onclick="go('thesis')">Thesis</button>
+  <button class="nb" onclick="go('leftism')">Leftism</button>
+  <button class="nb" onclick="go('power')">Power Process</button>
+  <button class="nb" onclick="go('disruption')">Disruption</button>
+  <button class="nb" onclick="go('freedom')">Freedom</button>
+  <button class="nb" onclick="go('history')">Principles of History</button>
+  <button class="nb" onclick="go('noreform')">No Reform</button>
+  <button class="nb" onclick="go('control')">Behavior Control</button>
+  <button class="nb" onclick="go('crossroads')">Crossroads</button>
+  <button class="nb" onclick="go('strategy')">Strategy</button>
+</div></nav>
+
+<div class="ct">
+
+<!-- THESIS -->
+<section class="sec" id="thesis">
+  <div class="sn">¶1–5 — The Opening Salvo</div>
+  <h2>The central thesis in four paragraphs</h2>
+  <p class="si">The Industrial Revolution has been a disaster for the human race. The system cannot be reformed. It must be destroyed — or it will reduce humans and all life to engineered products.</p>
+  <div class="dw">
+    <h4>The Argument's Architecture</h4>
+    <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg">
+      <rect x="200" y="10" width="360" height="44" rx="10" fill="#0f1014" stroke="#c93a1a" stroke-width="2"/>
+      <text x="380" y="37" text-anchor="middle" fill="#c93a1a" font-family="Inter,sans-serif" font-size="12" font-weight="700">The Industrial Revolution = Disaster</text>
+      <line x1="280" y1="54" x2="140" y2="85" stroke="#262830" stroke-width="1.5"/>
+      <line x1="380" y1="54" x2="380" y2="85" stroke="#262830" stroke-width="1.5"/>
+      <line x1="480" y1="54" x2="620" y2="85" stroke="#262830" stroke-width="1.5"/>
+      <rect x="30" y="85" width="220" height="44" rx="9" fill="#0f1014" stroke="#1a7acc" stroke-width="1.2"/>
+      <text x="140" y="111" text-anchor="middle" fill="#1a7acc" font-family="Inter,sans-serif" font-size="11" font-weight="600">WHY: Power Process theory</text>
+      <rect x="270" y="85" width="220" height="44" rx="9" fill="#0f1014" stroke="#7a4acc" stroke-width="1.2"/>
+      <text x="380" y="111" text-anchor="middle" fill="#7a4acc" font-family="Inter,sans-serif" font-size="11" font-weight="600">WHY: Freedom is incompatible</text>
+      <rect x="510" y="85" width="220" height="44" rx="9" fill="#0f1014" stroke="#cc9a1a" stroke-width="1.2"/>
+      <text x="620" y="111" text-anchor="middle" fill="#cc9a1a" font-family="Inter,sans-serif" font-size="11" font-weight="600">WHY: Technology always wins</text>
+      <line x1="140" y1="129" x2="290" y2="160" stroke="#262830" stroke-width="1"/>
+      <line x1="380" y1="129" x2="380" y2="160" stroke="#262830" stroke-width="1"/>
+      <line x1="620" y1="129" x2="470" y2="160" stroke="#262830" stroke-width="1"/>
+      <rect x="220" y="160" width="320" height="44" rx="10" fill="#0f1014" stroke="#cc2e2e" stroke-width="1.5"/>
+      <text x="380" y="186" text-anchor="middle" fill="#cc2e2e" font-family="Inter,sans-serif" font-size="12" font-weight="700">∴ Reform is impossible → Revolution</text>
+      <line x1="380" y1="204" x2="380" y2="230" stroke="#262830" stroke-width="1.5"/>
+      <rect x="200" y="230" width="360" height="40" rx="10" fill="rgba(24,168,92,.06)" stroke="#18a85c" stroke-width="1.5"/>
+      <text x="380" y="255" text-anchor="middle" fill="#18a85c" font-family="Inter,sans-serif" font-size="11" font-weight="700">Goal: Collapse of the technological system</text>
+      <text x="380" y="270" text-anchor="middle" fill="#686d82" font-family="Inter,sans-serif" font-size="9">Positive ideal: Wild nature + human nature free of control</text>
+    </svg>
+  </div>
+  <p>The text presents two possible futures: the system survives and reduces humanity to "engineered products and mere cogs," or it breaks down painfully. The author advocates the latter — sooner rather than later, because the bigger the system grows, the worse the breakdown.</p>
+</section>
+
+<!-- LEFTISM -->
+<section class="sec" id="leftism">
+  <div class="sn">¶6–32 — The Psychology of Modern Leftism</div>
+  <h2>Two psychological drivers: inferiority and oversocialization</h2>
+  <p class="si">The text opens not with technology but with a psychological analysis of leftism — arguing it is a <em>symptom</em> of the very problems the text diagnoses in modern society.</p>
+  <div class="g2">
+    <div class="gc" style="border-top:3px solid var(--pu)">
+      <h4>Feelings of inferiority</h4>
+      <p>Low self-esteem, powerlessness, defeatism, guilt, self-hatred. The leftist identifies with groups seen as "weak" or "inferior" precisely because of his own inferiority feelings. He hates what is strong and successful. He is anti-individualistic because he "feels like a loser" — he can feel strong only through a mass movement.</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--bl)">
+      <h4>Oversocialization</h4>
+      <p>Society's moral code is so demanding that some people internalize it too completely, generating constant guilt. They rebel — but only against society's failure to live up to <em>its own principles</em> (equality, nonviolence, kindness). They are "on a psychological leash," running on rails society has laid. Their rebellion is not truly autonomous.</p>
+    </div>
+  </div>
+  <div class="kp am">
+    <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--am)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+    <div class="kt"><strong>Why this matters later:</strong> The text returns to leftism in ¶213–230, arguing it is a <em>danger</em> to any anti-tech movement because leftists are drawn to activist causes, subvert movements to serve their psychological needs, and are fundamentally committed to collectivism and technology as tools of collective power.</div>
+  </div>
+</section>
+
+<!-- POWER PROCESS -->
+<section class="sec" id="power">
+  <div class="sn">¶33–44 — The Central Theory</div>
+  <h2>The power process: the engine of the entire argument</h2>
+  <p class="si">This is the text's core concept — a theory of human psychological needs that explains everything from individual depression to civilizational collapse.</p>
+  <div class="vc bl">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> The four elements</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+      <div style="display:flex;gap:12px;align-items:center"><div style="flex-shrink:0;width:28px;height:28px;border-radius:7px;background:var(--bl-d);display:flex;align-items:center;justify-content:center;color:var(--bl);font-weight:800;font-size:12px">1</div><p style="font-size:14px"><strong style="color:var(--tx3)">Goal</strong> — a real objective requiring effort</p></div>
+      <div style="display:flex;gap:12px;align-items:center"><div style="flex-shrink:0;width:28px;height:28px;border-radius:7px;background:var(--bl-d);display:flex;align-items:center;justify-content:center;color:var(--bl);font-weight:800;font-size:12px">2</div><p style="font-size:14px"><strong style="color:var(--tx3)">Effort</strong> — serious, meaningful exertion</p></div>
+      <div style="display:flex;gap:12px;align-items:center"><div style="flex-shrink:0;width:28px;height:28px;border-radius:7px;background:var(--bl-d);display:flex;align-items:center;justify-content:center;color:var(--bl);font-weight:800;font-size:12px">3</div><p style="font-size:14px"><strong style="color:var(--tx3)">Attainment</strong> — reasonable success rate</p></div>
+      <div style="display:flex;gap:12px;align-items:center"><div style="flex-shrink:0;width:28px;height:28px;border-radius:7px;background:var(--bl-d);display:flex;align-items:center;justify-content:center;color:var(--bl);font-weight:800;font-size:12px">4</div><p style="font-size:14px"><strong style="color:var(--tx3)">Autonomy</strong> — under one's own direction and control</p></div>
+    </div>
+  </div>
+  <p>When the power process is disrupted, the consequences include: boredom, demoralization, low self-esteem, depression, anxiety, guilt, frustration, hostility, abuse, hedonism, eating disorders, and more. The text argues these are not random social ills but <em>systematic consequences</em> of the technological system's interference with fundamental human needs.</p>
+  <div class="vc am">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--am)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24"/></svg> Surrogate activities</h3>
+    <p style="margin-top:8px;font-size:14px">When real goals are denied, people create artificial ones — scientific research, athletics, corporate climbing, stamp collecting. These are <em>less satisfying</em> than real goals because they lack genuine necessity. The person "is never at rest" — always chasing more.</p>
+    <p style="margin-top:8px;font-size:14px">The test: if the person had to devote serious effort to obtaining physical necessities in a varied and interesting way, would he feel deprived of his current pursuit? If no — it's a surrogate activity.</p>
+  </div>
+</section>
+
+<!-- DISRUPTION -->
+<section class="sec" id="disruption">
+  <div class="sn">¶45–76 — How Modern Society Breaks the Process</div>
+  <h2>The three-group theory of drives</h2>
+  <p class="si">The text divides human drives into three groups and argues that modern society systematically pushes them into the wrong categories.</p>
+  <div class="g3">
+    <div class="gc" style="border-top:3px solid var(--gn)">
+      <h4>Group 1: Too easy</h4>
+      <p>Drives satisfied with <strong>minimal effort</strong>. Modern society pushes physical necessities (food, shelter) here. Result: no meaningful power process from obtaining them.</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--bl)">
+      <h4>Group 2: Just right</h4>
+      <p>Drives requiring <strong>serious effort</strong> but achievable. This is where the power process lives. In primitive society, physical survival was here. Modern society fills this with <strong>artificial needs</strong> created by advertising.</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--rd)">
+      <h4>Group 3: Impossible</h4>
+      <p>Drives that <strong>can't be satisfied</strong>. Modern society pushes security, autonomy, and many impulses here — your fate depends on remote decisions you can't influence.</p>
+    </div>
+  </div>
+  <p>The 19th-century American frontier — with rapid change, broken communities, and isolation — did <em>not</em> produce the psychological problems of modern society. The difference: the frontiersman <em>created</em> change through his own effort, with real autonomy. Modern man has change <em>imposed</em> on him. The frontier satisfied the power process; modern life does not.</p>
+  <div class="kp bl">
+    <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+    <div class="kt"><strong>The key distinction on freedom:</strong> "In matters that are irrelevant to the functioning of the system we can generally do what we please… But in all <em>important</em> matters the system tends increasingly to regulate our behavior." You're free to choose your religion, sex partners, and entertainment — but not your work, your relationship to technology, or your fundamental way of life (¶72).</div>
+  </div>
+</section>
+
+<!-- FREEDOM -->
+<section class="sec" id="freedom">
+  <div class="sn">¶93–98 — Redefining Freedom</div>
+  <h2>Freedom as power over the circumstances of one's own life</h2>
+  <p class="si">The text rejects the conventional notion of freedom as constitutional rights. Real freedom is the opportunity to go through the power process with <em>real goals</em>, under one's own direction.</p>
+  <div class="pq">
+    "Freedom means being in control (either as an individual or as a member of a small group) of the life-and-death issues of one's existence: food, clothing, shelter and defense against whatever threats there may be in one's environment."
+    <span class="at">— ¶94</span>
+  </div>
+  <p>Constitutional rights are a "bourgeois conception of freedom" — designed to serve the needs of the social machine, not the individual. Indian monarchies and Italian Renaissance dictatorships allowed more personal freedom than modern democracy does, simply because they lacked efficient enforcement mechanisms. The technology of control matters more than the form of government.</p>
+</section>
+
+<!-- PRINCIPLES OF HISTORY -->
+<section class="sec" id="history">
+  <div class="sn">¶99–110 — Five Principles</div>
+  <h2>Rules governing social change</h2>
+  <p class="si">Five principles explaining why reform is futile and only revolution can change society's fundamental direction.</p>
+  <div class="acc">
+    <div class="ai"><div class="ah" onclick="tog(this)"><span style="color:var(--em);font-weight:800;margin-right:4px">1.</span>Small changes are transitory<svg class="achev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ab"><div class="abi">A small change to a long-term historical trend almost always gets swallowed — the trend reverts to its original state. Anti-corruption reforms, for example, rarely last; corruption creeps back. A permanent small change only appears permanent because it was pushing in the direction the trend was already going.</div></div></div>
+    <div class="ai"><div class="ah" onclick="tog(this)"><span style="color:var(--em);font-weight:800;margin-right:4px">2.</span>Large changes alter everything<svg class="achev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ab"><div class="abi">Society is an interconnected system. You can't permanently change one important part without changing all other parts. There is no surgical fix.</div></div></div>
+    <div class="ai"><div class="ah" onclick="tog(this)"><span style="color:var(--em);font-weight:800;margin-right:4px">3.</span>Large changes are unpredictable<svg class="achev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ab"><div class="abi">When you change something big enough to permanently alter a trend, the consequences for the whole society cannot be predicted in advance. The network of causes and effects is too complex.</div></div></div>
+    <div class="ai"><div class="ah" onclick="tog(this)"><span style="color:var(--em);font-weight:800;margin-right:4px">4.</span>New societies can't be designed on paper<svg class="achev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ab"><div class="abi">You cannot plan a new form of society and expect it to function as designed. This follows from Principle 3.</div></div></div>
+    <div class="ai"><div class="ah" onclick="tog(this)"><span style="color:var(--em);font-weight:800;margin-right:4px">5.</span>People don't rationally choose their society<svg class="achev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ab"><div class="abi">Societies develop through processes of social evolution not under rational human control. This follows from principles 1–4 combined.</div></div></div>
+  </div>
+</section>
+
+<!-- NO REFORM -->
+<section class="sec" id="noreform">
+  <div class="sn">¶111–142 — The Core Argument</div>
+  <h2>Why the system cannot be reformed</h2>
+  <p class="si">Four interlocking arguments — each sufficient by itself — proving that technology and freedom are incompatible.</p>
+  <div class="g2">
+    <div class="gc" style="border-top:3px solid var(--em)">
+      <h4><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--em)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Restriction is unavoidable</h4>
+      <p>Regulation is not bureaucratic excess — it's technically necessary. The system must mold human behavior to its needs. "It is not the fault of capitalism and it is not the fault of socialism. It is the fault of technology." (¶119)</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--rd)">
+      <h4><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg> "Bad" and "good" tech are inseparable</h4>
+      <p>Modern medicine requires the entire technological system. You can't keep medicine and discard the rest. And even medicine alone leads to genetic degradation → eugenics → engineered humans. (¶121–124)</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--am)">
+      <h4><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--am)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Technology always defeats freedom</h4>
+      <p>Each individual advance appears benign. No one could argue against electricity, plumbing, or the telephone. But cumulatively they transfer power from individuals to organizations. The automobile expanded freedom, then destroyed it. (¶125–135)</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--pu)">
+      <h4><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--pu)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Simpler problems are already intractable</h4>
+      <p>Society can't even stop environmental degradation, political corruption, or drug trafficking. How can it solve the far subtler problem of technology vs. freedom? (¶136–139)</p>
+    </div>
+  </div>
+  <div class="kp em">
+    <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--em)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div>
+    <div class="kt"><strong>The automobile parable (¶127):</strong> When cars were introduced, they <em>added</em> freedom — no one was forced to own one. But cars reshaped cities so that walking became impractical, and driving became mandatory, regulated, expensive, and dependent on vast systems. "When a new item of technology is introduced as an option, it does not necessarily remain optional."</div>
+  </div>
+  <div class="pq" style="border-left-color:var(--em)">
+    "No social arrangements, whether laws, institutions, customs or ethical codes, can provide permanent protection against technology. History shows that all social arrangements are transitory; they all change or break down eventually. But technological advances are permanent within the context of a given civilization."
+    <span class="at">— ¶133</span>
+  </div>
+</section>
+
+<!-- BEHAVIOR CONTROL -->
+<section class="sec" id="control">
+  <div class="sn">¶143–160 — The Dark Trajectory</div>
+  <h2>Technology will modify human nature itself</h2>
+  <p class="si">The most disturbing section: the text argues that when technology cannot reshape society to fit humans, it will reshape <em>humans to fit society</em>.</p>
+  <p>The tools: antidepressant drugs (already widespread), surveillance (cameras, data collection), propaganda (media, entertainment as escape mechanism), psychological techniques (education, "mental health" programs, "parenting" techniques), and eventually biological modification (gene therapy, neurological intervention).</p>
+  <div class="kp rd">
+    <div class="ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <div class="kt"><strong>The ratchet effect (¶156):</strong> Each behavior-modification technology starts optional. But when enough people adopt it, it changes the baseline, making it impossible for non-adopters to function. Like mass entertainment: no law requires TV, but society couldn't impose its current levels of stress without providing mass entertainment as an escape valve.</div>
+  </div>
+  <p>The endpoint: "Human beings will be adjusted to suit the needs of the system" (¶151). Not through conscious tyranny, but through a sequence of individually "rational" and "humanitarian" steps — each appearing beneficial in isolation.</p>
+</section>
+
+<!-- CROSSROADS -->
+<section class="sec" id="crossroads">
+  <div class="sn">¶161–178 — Two Futures</div>
+  <h2>The human race at a crossroads</h2>
+  <p class="si">If the system survives: complete control over humans and nature. If it breaks down: painful chaos, but a new chance. The text argues we should work for the second outcome.</p>
+  <div class="vc rd">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> If the system survives (¶163, 172–177)</h3>
+    <p style="margin-top:8px;font-size:14px">Three scenarios for a post-crisis world where technology wins — all are dystopian:</p>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+      <div style="padding:10px 14px;background:var(--bg3);border-radius:8px"><p style="font-size:13px"><strong style="color:var(--tx3)">Machines decide everything.</strong> Humans drift into total dependence; turning machines off = suicide.</p></div>
+      <div style="padding:10px 14px;background:var(--bg3);border-radius:8px"><p style="font-size:13px"><strong style="color:var(--tx3)">Elite controls machines.</strong> The masses are superfluous — exterminated, bred out, or reduced to "domestic animals" kept happy through engineering.</p></div>
+      <div style="padding:10px 14px;background:var(--bg3);border-radius:8px"><p style="font-size:13px"><strong style="color:var(--tx3)">Humans do busywork.</strong> People "shine each other's shoes" and "drive each other around in taxicabs" — a "thoroughly contemptible" end for the human race.</p></div>
+    </div>
+  </div>
+  <div class="vc gn">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> If the system breaks down (¶165–166)</h3>
+    <p style="margin-top:8px;font-size:14px">A "time of troubles" — painful, but the human race gets a new chance. Two tasks: (1) work to heighten stress that will cause breakdown; (2) develop and propagate an anti-technology ideology so that when it collapses, its remnants are "smashed beyond repair."</p>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section class="sec" id="strategy">
+  <div class="sn">¶180–212 — The Practical Program</div>
+  <h2>Strategy for revolution</h2>
+  <p class="si">The final major section outlines how the revolution should be conducted — and what it should <em>not</em> try to do.</p>
+  <div class="g2">
+    <div class="gc" style="border-top:3px solid var(--gn)">
+      <h4>Positive ideal: Nature</h4>
+      <p>Wild nature — the opposite of technology. Beautiful, popular, requires no utopian planning. "To relieve the pressure on nature it is not necessary to create a special kind of social system, it is only necessary to get rid of industrial society." (¶184)</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--em)">
+      <h4>Single overriding goal</h4>
+      <p>"The destruction of that system must be the revolutionaries' <em>only</em> goal." Any other goal tempts the use of technology to achieve it — and the trap snaps shut again. (¶200)</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--bl)">
+      <h4>Two-level propaganda</h4>
+      <p>Level 1: rational, for thoughtful people capable of leadership. Level 2: simplified, for the broader public. Never cheap or intemperate — maintain intellectual respectability. (¶187–188)</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--pu)">
+      <h4>Determined minority, not majority</h4>
+      <p>"History is made by active, determined minorities, not by the majority." Build a deeply committed core. The majority need only be aware of the ideology and reminded of it frequently. (¶189)</p>
+    </div>
+  </div>
+  <div class="vc cy">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cy)" stroke-width="2"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/></svg> Two kinds of technology (¶207–212)</h3>
+    <p style="margin-top:8px;font-size:14px">A critical distinction: <strong>small-scale technology</strong> (usable by small communities without outside help) has never regressed. But <strong>organization-dependent technology</strong> (requiring large-scale social organization) <em>does</em> regress when social organization breaks down. Roman aqueducts and roads were lost for centuries after the Empire fell. Modern technology is almost entirely organization-dependent. If the industrial system collapses, it would take centuries to rebuild — and there's no reason to assume anyone would want to.</p>
+  </div>
+  <div class="pq" style="border-left-color:var(--gn)">
+    "Imagine an alcoholic sitting with a barrel of wine in front of him. Suppose he starts saying to himself, 'Wine isn't bad for you if used in moderation…' Well, you know what is going to happen. Never forget that the human race with technology is just like an alcoholic with a barrel of wine."
+    <span class="at">— ¶203</span>
+  </div>
+</section>
+
+</div>
+
+<footer class="ft">
+  <p>Visual explainer of "Industrial Society and Its Future" (ISAIF) · Based on the 1995 text by Theodore John Kaczynski (FC)</p>
+  <p style="margin-top:5px">This document is an explanatory summary and does not reproduce the source text. 232 paragraphs distilled into major conceptual clusters.</p>
+</footer>
+
+<script>
+const secs=document.querySelectorAll('.sec'),nbs=document.querySelectorAll('.nb');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');const id=e.target.id;nbs.forEach(b=>b.classList.remove('on'));const m=document.querySelector(`.nb[onclick="go('${id}')"]`);if(m)m.classList.add('on')}})},{threshold:.1});
+secs.forEach(s=>obs.observe(s));
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('prog').style.width=(window.scrollY/h*100)+'%'});
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function tog(el){el.parentElement.classList.toggle('op')}
+</script>
+</body>
+</html>

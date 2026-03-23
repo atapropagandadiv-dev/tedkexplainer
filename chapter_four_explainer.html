@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter Four — Strategic Guidelines for an Anti-Tech Movement</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#08090b;--bg2:#0f1014;--bg3:#171920;--bg4:#1e2028;
+--bd:#262830;--bd2:#353842;
+--tx:#aeb3c6;--tx2:#686d82;--tx3:#e6eaf5;
+--em:#c93a1a;--em-d:rgba(201,58,26,.1);
+--bl:#1a7acc;--bl-d:rgba(26,122,204,.1);
+--gn:#18a85c;--gn-d:rgba(24,168,92,.1);
+--pu:#7a4acc;--pu-d:rgba(122,74,204,.1);
+--am:#cc9a1a;--am-d:rgba(204,154,26,.1);
+--rd:#cc2e2e;--rd-d:rgba(204,46,46,.08);
+--cy:#1aacac;--cy-d:rgba(26,172,172,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+.prog{position:fixed;top:0;left:0;height:3px;z-index:999;background:linear-gradient(90deg,var(--em),var(--am),var(--gn));width:0;transition:width .12s}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:-30%;background:radial-gradient(ellipse 50% 40% at 30% 45%,rgba(201,58,26,.05),transparent),radial-gradient(ellipse 45% 50% at 70% 55%,rgba(26,122,204,.04),transparent);pointer-events:none}
+.hero-lbl{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--em);margin-bottom:26px;opacity:0;animation:fu .7s ease forwards .2s}
+.hero h1{font-size:clamp(26px,5vw,48px);font-weight:800;color:var(--tx3);line-height:1.14;max-width:800px;opacity:0;animation:fu .7s ease forwards .35s}
+.hero h1 em{font-style:normal;color:var(--em)}
+.hero-sub{max-width:620px;margin-top:20px;font-size:17px;color:var(--tx2);opacity:0;animation:fu .7s ease forwards .5s}
+.hero-meta{margin-top:34px;font-size:13px;color:var(--tx2);opacity:0;animation:fu .7s ease forwards .6s}
+.hero-arr{position:absolute;bottom:30px;color:var(--tx2);font-size:12px;letter-spacing:1px;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fu .7s ease forwards .75s}
+.hero-arr svg{animation:bob 2s ease-in-out infinite}
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,9,11,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav-in{max-width:1100px;margin:0 auto;display:flex;gap:2px;padding:10px 24px}
+.nb{flex-shrink:0;padding:6px 13px;border-radius:6px;font-size:12px;font-weight:600;color:var(--tx2);background:none;border:none;cursor:pointer;white-space:nowrap;transition:.2s}
+.nb:hover,.nb.on{color:var(--tx3);background:var(--bg3)}
+.nb.on{color:var(--em)}
+.ct{max-width:840px;margin:0 auto;padding:0 24px}
+.sec{padding:76px 0 52px;opacity:0;transform:translateY(26px);transition:opacity .5s,transform .5s}
+.sec.vis{opacity:1;transform:none}
+.sn{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--em);margin-bottom:10px}
+.sec h2{font-size:clamp(22px,3.5vw,34px);font-weight:800;color:var(--tx3);line-height:1.18;margin-bottom:16px}
+.si{font-size:17px;color:var(--tx2);margin-bottom:30px;border-left:3px solid var(--em);padding-left:16px}
+p+p{margin-top:14px}
+.vc{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:28px;margin:28px 0;position:relative;overflow:hidden}
+.vc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.vc.em::after{background:var(--em)}.vc.bl::after{background:var(--bl)}.vc.gn::after{background:var(--gn)}.vc.pu::after{background:var(--pu)}.vc.am::after{background:var(--am)}.vc.rd::after{background:var(--rd)}.vc.cy::after{background:var(--cy)}
+.vc h3{font-size:17px;font-weight:700;color:var(--tx3);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.kp{display:flex;gap:14px;border-radius:11px;padding:18px 20px;margin:24px 0;align-items:flex-start}
+.kp.em{background:var(--em-d);border:1px solid rgba(201,58,26,.16)}.kp.bl{background:var(--bl-d);border:1px solid rgba(26,122,204,.16)}.kp.gn{background:var(--gn-d);border:1px solid rgba(24,168,92,.16)}.kp.pu{background:var(--pu-d);border:1px solid rgba(122,74,204,.16)}.kp.am{background:var(--am-d);border:1px solid rgba(204,154,26,.16)}.kp.rd{background:var(--rd-d);border:1px solid rgba(204,46,46,.14)}
+.kp .ki{flex-shrink:0;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.kp.em .ki{background:rgba(201,58,26,.14)}.kp.bl .ki{background:rgba(26,122,204,.14)}.kp.gn .ki{background:rgba(24,168,92,.14)}.kp.pu .ki{background:rgba(122,74,204,.14)}.kp.am .ki{background:rgba(204,154,26,.14)}.kp.rd .ki{background:rgba(204,46,46,.12)}
+.kp .kt{font-size:14px;line-height:1.65}.kp .kt strong{color:var(--tx3)}
+.pq{margin:30px 0;padding:20px 24px;background:var(--bg2);border-left:4px solid var(--bl);border-radius:0 10px 10px 0;font-size:15.5px;font-weight:500;color:var(--tx3);font-style:italic;line-height:1.7}
+.pq .at{font-style:normal;font-weight:400;color:var(--tx2);font-size:13px;margin-top:8px;display:block}
+.dw{margin:28px 0;background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:24px;overflow-x:auto}
+.dw h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--em);margin-bottom:14px}
+.dw svg{width:100%;height:auto;display:block;min-width:480px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.gc{background:var(--bg2);border:1px solid var(--bd);border-radius:11px;padding:20px}
+.gc h4{font-size:14px;font-weight:700;color:var(--tx3);margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.gc p{font-size:13.5px;color:var(--tx2);line-height:1.65}
+.acc{margin:24px 0}
+.ai{border:1px solid var(--bd);border-radius:10px;margin-bottom:7px;overflow:hidden;background:var(--bg2)}
+.ah{padding:14px 18px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;font-size:14.5px;font-weight:600;color:var(--tx3);transition:.2s}
+.ah:hover{background:var(--bg3)}
+.achev{margin-left:auto;transition:transform .3s;color:var(--tx2)}
+.ai.op .achev{transform:rotate(180deg)}
+.ab{max-height:0;overflow:hidden;transition:max-height .4s;padding:0 18px}
+.ai.op .ab{max-height:800px}
+.abi{padding:0 0 16px;font-size:13.5px;color:var(--tx2);line-height:1.7}
+/* PHASE STEPS */
+.phase{display:flex;flex-direction:column;gap:0;margin:24px 0}
+.ps{display:flex;gap:14px;position:relative;padding-bottom:24px}
+.ps:last-child{padding-bottom:0}
+.ps::before{content:'';position:absolute;left:16px;top:36px;bottom:0;width:2px;background:var(--bd)}
+.ps:last-child::before{display:none}
+.pn{flex-shrink:0;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;z-index:1}
+.pb h5{font-size:15px;font-weight:700;color:var(--tx3);margin-bottom:3px}
+.pb p{font-size:13.5px;color:var(--tx2);line-height:1.6}
+.ft{margin-top:80px;padding:40px 24px;border-top:1px solid var(--bd);text-align:center;color:var(--tx2);font-size:13px}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(max-width:600px){.sec{padding:56px 0 36px}.vc{padding:20px}}
+.home-btn{position:fixed;top:16px;left:16px;z-index:200;display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:rgba(14,14,18,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);color:rgba(200,205,220,.7);font-family:Inter,sans-serif;font-size:12px;font-weight:600;text-decoration:none;transition:all .25s;letter-spacing:.3px}.home-btn:hover{background:rgba(24,24,32,.95);color:#eee;border-color:rgba(255,255,255,.15)}.home-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+<a href="index.html" class="home-btn"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M12 3v18"/><path d="M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg>Home</a>
+
+<div class="prog" id="prog"></div>
+
+<section class="hero">
+  <div class="hero-lbl">Chapter Four — Explained</div>
+  <h1>Strategic Guidelines for<br>an <em>Anti-Tech Movement</em></h1>
+  <p class="hero-sub">A visual guide to revolutionary strategy: how a tiny committed cadre can exploit crises, build power, maintain discipline, and overcome seemingly impossible odds — drawn from Lenin, Mao, Castro, the Irish nationalists, and the dynamics of social movements.</p>
+  <div class="hero-meta">Based on the text by Theodore John Kaczynski (© 2015, revised 2018)</div>
+  <div class="hero-arr">SCROLL<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+</section>
+
+<nav class="nav"><div class="nav-in">
+  <button class="nb" onclick="go('threeP')">Three Pillars</button>
+  <button class="nb" onclick="go('flex')">Flexibility</button>
+  <button class="nb" onclick="go('demo')">Democratic Fallacy</button>
+  <button class="nb" onclick="go('courage')">Courage Under Fire</button>
+  <button class="nb" onclick="go('tiny')">Small → Victorious</button>
+  <button class="nb" onclick="go('pattern')">The Pattern</button>
+  <button class="nb" onclick="go('momentum')">Momentum &amp; Decisiveness</button>
+  <button class="nb" onclick="go('org')">Organization</button>
+  <button class="nb" onclick="go('resilience')">Resilience</button>
+  <button class="nb" onclick="go('practical')">Practical Lessons</button>
+</div></nav>
+
+<div class="ct">
+
+<!-- 1. THREE PILLARS -->
+<section class="sec" id="threeP">
+  <div class="sn">Section 1 — The Foundation</div>
+  <h2>Three pillars of revolutionary preparation</h2>
+  <p class="si">No specific route to victory can be planned in advance. The movement must wait for opportunities — but it must be <em>ready</em> when they arrive. Preparation rests on three pillars.</p>
+
+  <div class="g3">
+    <div class="gc" style="border-top:3px solid var(--em)">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--em)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Internal power</h4>
+      <p>Build a strong, cohesive organization of <strong>absolutely committed</strong> individuals. Quality over quantity. A small cadre of high-quality personnel outperforms a much larger mediocre organization.</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--bl)">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg> External reputation</h4>
+      <p>Win respect for vigor and effectiveness. Earn a reputation as the <strong>purest and most uncompromising</strong> revolutionary movement. Feared and hated is fine — as long as you're respected.</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--gn)">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Undermine confidence</h4>
+      <p>Help erode faith in the technological system. The system's own failures do most of the work. The movement's job is to call attention to those failures and make the system look <strong>weak and vulnerable</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FLEXIBILITY -->
+<section class="sec" id="flex">
+  <div class="sn">Sections 2–4 — Core Principle</div>
+  <h2>Flexibility: the master virtue</h2>
+  <p class="si">Revolutions are almost never planned out in advance. They are carried out by trial-and-error and by grasping unforeseen opportunities. The movement must never be locked into a rigid plan.</p>
+
+  <div class="pq">
+    "We often have to grope our way along… Who could ever make a gigantic revolution, knowing in advance how to carry it through to the end?"
+    <span class="at">— Lenin</span>
+  </div>
+
+  <p>In January 1917, Lenin did not believe revolution would be possible in Russia during his own lifetime. Less than a year later, the Bolsheviks ruled one-sixth of the world's land surface. He succeeded only because he had the acumen to recognize and exploit an unexpected opportunity — the spontaneous insurrection of February 1917.</p>
+
+  <div class="kp am">
+    <div class="ki"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--am)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+    <div class="kt"><strong>The paradox of waiting:</strong> The movement may have to wait years for its opportunity. But it cannot afford to relax — an inactive movement dies. Members must be kept occupied with purposeful work (propaganda, training, study, peripheral political action), and the movement may need to <em>help create</em> the conditions for revolution through prior activity.</div>
+  </div>
+</section>
+
+<!-- 3. DEMOCRATIC FALLACY -->
+<section class="sec" id="demo">
+  <div class="sn">Section 5 — The Key Insight</div>
+  <h2>The "democratic fallacy"</h2>
+  <p class="si">The objection that 90% of people would vote against the collapse of the system is based on a fundamental misunderstanding of how social change actually works.</p>
+
+  <div class="vc em">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--em)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg> The democratic fallacy</h3>
+    <p style="font-size:15px;margin-top:8px">The assumption that the <strong>number of people</strong> favoring one side determines the outcome of social struggles — as it determines the outcome of elections.</p>
+    <p style="font-size:14px;color:var(--tx2);margin-top:12px">In reality, outcomes are determined by the <strong>dynamics of social movements</strong>: organization, discipline, commitment, timing, and the psychological state of the population. As Bolívar said: "It is not always the physical majority that is decisive; rather, it is superiority of moral force that tips the political balance."</p>
+  </div>
+
+  <p>The critical scenario: when the system fails severely enough, the vast majority become hopeless, apathetic, and passive — or concerned only with personal survival. They won't actively <em>support</em> the revolution, but they won't <em>defend the system</em> either. A well-organized minority with concentrated purpose can then prevail.</p>
+</section>
+
+<!-- 4. COURAGE -->
+<section class="sec" id="courage">
+  <div class="sn">Sections 6–8 — Human Capacity</div>
+  <h2>People will accept extraordinary hardship — if given purpose</h2>
+  <p class="si">The chapter devotes extensive space to arguing that ordinary people — not just hard-core revolutionaries — are capable of heroic courage when conditions demand it.</p>
+
+  <div class="acc">
+    <div class="ai"><div class="ah" onclick="tog(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--em)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Hard-core revolutionaries: willing to die<svg class="achev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <div class="ab"><div class="abi">The early Christian martyrs; Al Qaeda suicide bombers; the Russian revolutionary Kalyaev who, offered his life in exchange for repentance, replied: "My death will be more useful to my cause than the grand duke's death"; Fanny Kaplan who shot Lenin knowing she'd die; Charlotte Corday who assassinated Marat knowing she faced the guillotine; the Irish nationalists of 1916 who expressed "confidence that their deaths were a sort of triumph."</div></div></div>
+    <div class="ai"><div class="ah" onclick="tog(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Ordinary people: heroic under extreme conditions<svg class="achev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <div class="ab"><div class="abi">Russian civilians who never broke under German invasion. German civilians whose morale survived Allied bombing that killed tens of thousands in single operations. Allied air-crews who kept flying despite ~75% casualty rates on some missions. French and Polish resistance fighters who risked not just death but excruciating torture. Jean Moulin, tortured to death by the Gestapo, who never cracked. Polish civilians who risked their families' lives to save Jewish children. Irish recruits who kept volunteering even as the war's desperate character became unmistakable.</div></div></div>
+    <div class="ai"><div class="ah" onclick="tog(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>The paradox: danger brings fulfillment<svg class="achev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <div class="ab"><div class="abi">Many who endure extreme danger for a cause experience deep fulfillment — even enjoyment. A POW described escape attempts as an "intoxicating cup of excitement." French resistance fighters felt "nostalgia" when the war ended. In Northern Ireland, suicide rates among youth <em>rose</em> after peace arrived — the sense of shared struggle was replaced by "ennui and despair." Celia Sánchez, Castro's guerrillera, reminisced: "Those were the best times, weren't they? We will never be so happy again." An Iraq veteran: "I miss that daily sense of purpose, survive or die."</div></div></div>
+  </div>
+
+  <div class="kp bl">
+    <div class="ki"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+    <div class="kt"><strong>The takeaway:</strong> Modern people — oriented toward security and comfort in normal times — will not necessarily choose the easiest road when society is in turmoil. Many will choose a heroic course, <em>if</em> there are leaders who can energize them, organize them, and give them a sense of purpose.</div>
+  </div>
+</section>
+
+<!-- 5. TINY GROUPS WIN -->
+<section class="sec" id="tiny">
+  <div class="sn">Section 10 — The Historical Pattern</div>
+  <h2>Tiny "crackpots" who changed the world</h2>
+  <p class="si">The chapter emphasizes a startling historical pattern: successful revolutions frequently begin with movements so tiny and despised that no one takes them seriously.</p>
+
+  <div class="vc bl">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> From obscurity to power</h3>
+    <div style="margin-top:14px;display:flex;flex-direction:column;gap:14px">
+      <div style="padding:14px 18px;background:var(--bg3);border-radius:10px;display:flex;gap:14px;align-items:flex-start">
+        <div style="flex-shrink:0;font-size:26px;font-weight:900;color:var(--em);line-height:1">12</div>
+        <div><strong style="color:var(--tx3);font-size:14px">Castro's guerrilleros</strong><p style="font-size:13px;color:var(--tx2);margin-top:2px">Started with 82 men, reduced to ~12 survivors within three days. At peak strength: only 800 guerrillas vs. Batista's 30,000-strong army. Yet Castro won — through political skill, not military force.</p></div>
+      </div>
+      <div style="padding:14px 18px;background:var(--bg3);border-radius:10px;display:flex;gap:14px;align-items:flex-start">
+        <div style="flex-shrink:0;font-size:22px;font-weight:900;color:var(--pu);line-height:1;padding-top:3px">~100</div>
+        <div><strong style="color:var(--tx3);font-size:14px">Russian Bolsheviks</strong><p style="font-size:13px;color:var(--tx2);margin-top:2px">At the start of the 20th century, regarded as "cranks" by everyone. A "few hundred" members total. In 1914, 3 of their 7 St. Petersburg committee members were police spies. By late 1917: masters of one-sixth of Earth's land surface.</p></div>
+      </div>
+      <div style="padding:14px 18px;background:var(--bg3);border-radius:10px;display:flex;gap:14px;align-items:flex-start">
+        <div style="flex-shrink:0;font-size:26px;font-weight:900;color:var(--gn);line-height:1">≈0</div>
+        <div><strong style="color:var(--tx3);font-size:14px">Irish extreme nationalists</strong><p style="font-size:13px;color:var(--tx2);margin-top:2px">For decades, independence was kept alive by a "minuscule minority" with virtually no public support. By 1910, the Irish had no serious grievance left. Yet between 1916–1922, this tiny faction swung the majority to their side and won independence.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pq" style="border-left-color:var(--gn)">
+    "I began a revolution with eighty-two men. If I had to do it again, I would do it with ten or fifteen and absolute faith."
+    <span class="at">— Fidel Castro</span>
+  </div>
+</section>
+
+<!-- 6. THE PATTERN -->
+<section class="sec" id="pattern">
+  <div class="sn">Section 11 — The Master Plan</div>
+  <h2>The expected pattern for revolution</h2>
+  <p class="si">The chapter outlines a seven-phase general pattern. It accommodates many specific routes — it's a framework, not a rigid script.</p>
+
+  <div class="phase">
+    <div class="ps"><div class="pn" style="background:var(--bl)">A</div><div class="pb"><h5>Build the cadre</h5><p>A small, deeply committed core builds internal organization and discipline. Branches in multiple key nations. Disseminates ideas chosen for soundness, not popularity. Proves itself the most effective oppositional force.</p></div></div>
+    <div class="ps"><div class="pn" style="background:var(--pu)">B</div><div class="pb"><h5>Ideas gain traction</h5><p>A large minority recognizes the movement's ideas have merit — but rejects the solutions out of cowardice, apathy, or reluctance to change. This is expected and acceptable.</p></div></div>
+    <div class="ps"><div class="pn" style="background:var(--am)">C</div><div class="pb"><h5>Crisis arrives</h5><p>A severe system failure makes old ways of living impossible. Most people lose all respect for and confidence in the existing order. Many become desperate or angry. <strong>This is the moment.</strong></p></div></div>
+    <div class="ps"><div class="pn" style="background:var(--em)">D</div><div class="pb"><h5>Revolutionaries energize a minority</h5><p>They step in to inspire, organize, and channel fear and anger into purposeful action. Most of the population remains passive — but they won't defend the system either.</p></div></div>
+    <div class="ps"><div class="pn" style="background:var(--rd)">E</div><div class="pb"><h5>Authorities crumble</h5><p>The power-structure is disoriented, frightened, and riven by internal conflict. It cannot organize an effective defense. Power shifts to whoever is most organized and determined.</p></div></div>
+    <div class="ps"><div class="pn" style="background:var(--gn)">F</div><div class="pb"><h5>Cascading global collapse</h5><p>Globalization means nations are deeply interdependent. Collapse in one major nation (e.g., the US) cascades to disrupt the entire world economy, providing opportunities for anti-tech movements everywhere.</p></div></div>
+    <div class="ps"><div class="pn" style="background:#fff">G</div><div class="pb"><h5>No hesitation</h5><p><strong>When the moment arrives, press forward without hesitation, vacillation, doubts, or scruples.</strong> Any wavering throws the movement into disarray and destroys momentum.</p></div></div>
+  </div>
+</section>
+
+<!-- 7. MOMENTUM -->
+<section class="sec" id="momentum">
+  <div class="sn">Sections 12–13 — The Final Push</div>
+  <h2>Momentum, decisiveness, and moral clarity</h2>
+  <p class="si">Once the revolutionary process enters its final stage, a different set of rules applies — drawn primarily from Trotsky and Alinsky.</p>
+
+  <div class="g2">
+    <div class="gc" style="border-top:3px solid var(--em)">
+      <h4>⏱ Timing is everything</h4>
+      <p>Trotsky: there is a limited window — weeks, maybe months — during which a society is primed for revolution. Too early or too late means failure. Recognizing the right moment requires deep study of history and revolutionary theory.</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--am)">
+      <h4>🔥 Maintain momentum</h4>
+      <p>Alinsky: a mass movement must stay in constant action, avoid defeats, and keep adversaries under unrelenting pressure. Trotsky: any obstacle that checks forward motion leads to "disappointments, growth of indifferentism."</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--bl)">
+      <h4>◼ Black and white morality</h4>
+      <p>Alinsky: organize in black and white. Your cause is pure good; your adversary is pure evil. Any moral ambiguity leads to fatal hesitation. Lincoln, Grant, Churchill, and Roosevelt all understood this in their existential struggles.</p>
+    </div>
+    <div class="gc" style="border-top:3px solid var(--pu)">
+      <h4>🚫 Never temporize</h4>
+      <p>The Mensheviks temporized to avoid offending people. The Bolsheviks acted. In revolutionary conditions, temporizing is a sure-loser strategy. "The Compromisers talked themselves out of difficulties; the Bolsheviks went to meet them."</p>
+    </div>
+  </div>
+
+  <div class="kp rd">
+    <div class="ki"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+    <div class="kt"><strong>Exception — don't force the moment:</strong> The Bolsheviks intentionally aborted an insurrection in July 1917 because they judged the time unripe. This cost them momentum and caused a severe setback — but averted the far worse disaster of a premature uprising. Knowing when <em>not</em> to act is as important as decisiveness.</div>
+  </div>
+</section>
+
+<!-- 8. ORGANIZATION -->
+<section class="sec" id="org">
+  <div class="sn">Sections 14–19 — Building the Machine</div>
+  <h2>Quality, discipline, and unity</h2>
+  <p class="si">The chapter offers detailed guidance on organizational structure — drawing from Castro, Stalin, Mandela, and Lenin (while carefully separating useful principles from their ideological baggage).</p>
+
+  <div class="vc pu">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--pu)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> Organizational principles</h3>
+    <div style="margin-top:14px;display:flex;flex-direction:column;gap:12px">
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px;border-left:3px solid var(--pu)">
+        <p style="font-size:14px"><strong style="color:var(--tx3)">Quality over quantity</strong> — Strictly subordinate growth to recruiting high-quality people capable of total commitment. Selectiveness in recruitment is essential.</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px;border-left:3px solid var(--bl)">
+        <p style="font-size:14px"><strong style="color:var(--tx3)">New values</strong> — Revolutionary members must abandon the values of technological society and adopt a new morality designed to serve the purposes of revolution.</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px;border-left:3px solid var(--gn)">
+        <p style="font-size:14px"><strong style="color:var(--tx3)">Never dilute the message</strong> — Never retreat from extreme positions for popularity. A movement should seek to be respected, not liked. "Mao regarded hatred of a revolutionary organization as a sign that it was effective."</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px;border-left:3px solid var(--am)">
+        <p style="font-size:14px"><strong style="color:var(--tx3)">Unity through democratic centralism</strong> — Free internal discussion, then absolute obedience to decisions. Stalin stated the theory perfectly (then violated it in practice). Mandela agreed: "Having subjugated his own will to the movement, he was determined that others should do so too."</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px;border-left:3px solid var(--em)">
+        <p style="font-size:14px"><strong style="color:var(--tx3)">Principled splitting is acceptable</strong> — When irreconcilable disagreements persist, it's better for factions to separate than to maintain false unity. Lenin never hesitated: "We must not be afraid to be a minority." He preferred a small faction that was <em>right</em> over a large one built on compromised principles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. RESILIENCE -->
+<section class="sec" id="resilience">
+  <div class="sn">Sections 20–22 — The Psychological Core</div>
+  <h2>Self-confidence and recovery from defeat</h2>
+  <p class="si">The chapter's longest section is devoted to demonstrating a single principle: seemingly lost causes triumph when the defeated persist with unbreakable determination.</p>
+
+  <div class="vc gn">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Comebacks from the brink</h3>
+    <div style="margin-top:14px;display:flex;flex-direction:column;gap:12px">
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px">
+        <p style="font-size:13.5px"><strong style="color:var(--tx3)">Alfred the Great (878 AD)</strong> — Danes seized all of Wessex. Alfred escaped to marshes with a few followers. By May he'd built a guerrilla army. Defeated the Danes decisively at Edington.</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px">
+        <p style="font-size:13.5px"><strong style="color:var(--tx3)">Robert Bruce (1306–1314)</strong> — Defeated within three months of claiming Scotland's throne, reduced to a hunted fugitive in "almost ludicrous" weakness. Rose through savage guerrilla war to defeat the English at Bannockburn and reign as king.</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px">
+        <p style="font-size:13.5px"><strong style="color:var(--tx3)">German Social Democrats (1878)</strong> — Nearly destroyed by the Socialist Law. "Many lost heart; the movement nearly disintegrated completely." Within six years: stronger than ever, even while still illegal.</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px">
+        <p style="font-size:13.5px"><strong style="color:var(--tx3)">Chinese Communists (1931)</strong> — Lost 90% of their revolutionary forces. Persisted. By 1949: masters of China.</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px">
+        <p style="font-size:13.5px"><strong style="color:var(--tx3)">South African ANC (1970s)</strong> — Seemed "thoroughly defeated and almost defunct." Continued the struggle. Eventually became the ruling party.</p>
+      </div>
+      <div style="padding:12px 16px;background:var(--bg3);border-radius:9px">
+        <p style="font-size:13.5px"><strong style="color:var(--tx3)">Bolsheviks (repeatedly)</strong> — Crushed in 1905, destroyed in 1914, severely set back in July 1917, invaded by counterrevolutionaries in 1918–20. Each time they recovered and came back stronger.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pq" style="border-left-color:var(--em)">
+    "'The most important feature of Fidel's character,' his brother Raúl said, 'is that he will not accept defeat.' Every phase of his life proves this point. He never gave up; he never lost heart; he seems immune to discouragement and dismay."
+    <span class="at">— Herbert Matthews, biographer of Castro</span>
+  </div>
+
+  <div class="kp gn">
+    <div class="ki"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="kt"><strong>The silver lining of defeat:</strong> A major defeat can actually <em>strengthen</em> an organization by weeding out weaker members. Trotsky noted that after the July 1917 setback, those Bolsheviks who hadn't wavered could be "relied on absolutely." When choosing cadre for the October insurrection, organizers would "glance round many a time calling to mind who bore himself how in the July days."</div>
+  </div>
+
+  <p>But self-confidence applies only to the <em>ultimate goal</em>. For specific operations: overconfidence leads to carelessness and defeat. Lenin habitually exaggerated risks and planned with meticulous care. Mao: "Strategically, despise the enemy; tactically, take the enemy seriously." And: "Fight no battle you are not sure of winning."</p>
+</section>
+
+<!-- 10. PRACTICAL -->
+<section class="sec" id="practical">
+  <div class="sn">Sections 24–30 — Operational Guidance</div>
+  <h2>Practical lessons for the real world</h2>
+  <p class="si">The chapter's final sections address concrete operational concerns — from propaganda targeting to infiltration strategy to surveillance countermeasures.</p>
+
+  <div class="g2">
+    <div class="gc">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Target the predisposed</h4>
+      <p>People usually accept only ideas they're already predisposed to accept. Focus recruitment on promising sectors. But propagate ideas broadly — even superficial familiarity helps when crisis arrives.</p>
+    </div>
+    <div class="gc">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--am)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Clear lines of demarcation</h4>
+      <p>Maintain strict separation from related movements — radical environmentalists (ambivalent on technology), anarcho-primitivists (contaminated with leftist issues). Independence is essential for identity and freedom of action.</p>
+    </div>
+    <div class="gc">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Assume you're watched</h4>
+      <p>Every historical radical movement has been infiltrated — Bolsheviks, Irish nationalists, German Social Democrats, anti-apartheid activists, Castro's guerrilleros. A legal organization must remain <strong>strictly legal</strong>.</p>
+    </div>
+    <div class="gc">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gn)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Study relentlessly</h4>
+      <p>Study the history and methods of past movements. No cookbook formulas — but ideas that can be adapted. "If you fail to learn from the past you condemn yourself to learning everything by trial and error."</p>
+    </div>
+  </div>
+
+  <div class="vc cy">
+    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cy)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Technology: tool and threat</h3>
+    <p style="margin-top:10px;font-size:14px">The chapter ends with a sobering note: traditional revolutionary methods (street protests) are becoming obsolete. Surveillance cameras, face-recognition, sound weapons, and increasingly robotic military forces make old approaches dangerous. Revolutionaries need technological competence both to defend against surveillance and to apply technology for their own purposes. A future revolution "will depend heavily on technological manipulations, both by the authorities and by the revolutionaries."</p>
+  </div>
+
+  <div class="pq" style="border-left-color:var(--em);margin-top:28px">
+    "Is the elimination of the technological system worth all of the desperate risks and terrifying disasters that it will entail? If you don't have the courage to answer 'yes' to that question, then you'd better quit whining about the evils of the modern world and just adapt yourself to them as best you can."
+    <span class="at">— Section 13, final paragraph</span>
+  </div>
+</section>
+
+</div>
+
+<footer class="ft">
+  <p>Visual explainer of Chapter Four · Based on the text by Theodore John Kaczynski (© 2015, revised 2018)</p>
+  <p style="margin-top:6px">This document is an explanatory summary and does not reproduce the source text.</p>
+</footer>
+
+<script>
+const secs=document.querySelectorAll('.sec'),nbs=document.querySelectorAll('.nb');
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');const id=e.target.id;nbs.forEach(b=>b.classList.remove('on'));const m=document.querySelector(`.nb[onclick="go('${id}')"]`);if(m)m.classList.add('on')}})},{threshold:.12});
+secs.forEach(s=>obs.observe(s));
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('prog').style.width=(window.scrollY/h*100)+'%'});
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function tog(el){el.parentElement.classList.toggle('op')}
+</script>
+</body>
+</html>
